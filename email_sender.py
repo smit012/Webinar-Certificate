@@ -69,12 +69,15 @@ if names_input:
             st.success("✅ Certificates generated!")
 
             # Individual download buttons
-            for filename, data in output_images:
-                st.download_button(
-                    label=f"📥 Download {filename}",
-                    data=data,
-                    file_name=filename,
-                    mime="image/png"
+        
+
+            for i, (filename, data) in enumerate(output_images):
+                 st.download_button(
+                     label=f"📥 Download {filename}",
+                     data=data,
+                     file_name=filename,
+                     mime="image/png",
+                     key=f"{filename}_{i}"
                 )
 
             # ZIP download
