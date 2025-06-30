@@ -1,1 +1,1 @@
-# Webinar-Certificate
+# TechNestIntern-auto-mailer
