@@ -46,7 +46,10 @@ if names_input:
             for name in names:
                 cert_img = cert_template.copy()
                 draw = ImageDraw.Draw(cert_img)
-                font = ImageFont.truetype(font_path, font_size)
+                try:
+                     font = ImageFont.truetype("OpenSans-Regular.ttf", font_size)
+                except:
+                     font = ImageFont.load_default()
 
                 # Center the name horizontally
                 text = f'"{name}"'
