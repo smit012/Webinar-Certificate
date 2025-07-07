@@ -39,13 +39,7 @@ if names_input:
 
     if st.button("🚀 Generate Certificates"):
         try:
-            # Use system font path or bundled font file
-            font_path = "C:/Windows/Fonts/arial.ttf"  # Change if deploying on another OS
-            try:
-                font = ImageFont.truetype(font_path, font_size)
-            except:
-                st.warning("⚠️ Arial font not found. Using default font.")
-                font = ImageFont.load_default()
+            font_file = "OpenSans-Regular.ttf"  # Must be in the same folder as this .py file
 
             output_images = []
 
@@ -53,14 +47,20 @@ if names_input:
                 cert_img = cert_template.copy()
                 draw = ImageDraw.Draw(cert_img)
 
-                # Remove quotes and center text
+                try:
+                    font = ImageFont.truetype(font_file, font_size)
+                except Exception as e:
+                    st.warning(f"⚠️ Font file not found or invalid. Using default font. Error: {e}")
+                    font = ImageFont.load_default()
+
+                # Center the name horizontally
                 text = name
                 bbox = font.getbbox(text)
                 text_width = bbox[2] - bbox[0]
                 image_width = cert_img.width
                 x_position = (image_width - text_width) // 2
 
-                # Draw name
+                # Draw name on certificate
                 draw.text((x_position, y_position), text, font=font, fill=font_color)
 
                 # Save to buffer
@@ -70,7 +70,7 @@ if names_input:
 
             st.success("✅ Certificates generated!")
 
-            # Download buttons
+            # Individual download buttons
             for i, (filename, data) in enumerate(output_images):
                 st.download_button(
                     label=f"📥 Download {filename}",
@@ -80,7 +80,7 @@ if names_input:
                     key=f"{filename}_{i}"
                 )
 
-            # ZIP all certificates
+            # ZIP download
             zip_buffer = io.BytesIO()
             with zipfile.ZipFile(zip_buffer, "w") as zip_file:
                 for filename, data in output_images:
