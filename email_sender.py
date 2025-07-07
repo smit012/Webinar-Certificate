@@ -9,7 +9,7 @@ st.set_page_config(page_title="Certificate Generator", layout="centered")
 st.title("🎓 Certificate Generator")
 
 # Google Drive direct link (hardcoded)
-GOOGLE_DRIVE_DIRECT_LINK = "https://drive.google.com/uc?export=download&id=1Jrth3dtK4XsuLOmD7W7X75IHVN5XqMHd"
+GOOGLE_DRIVE_DIRECT_LINK = "https://drive.google.com/file/d/1H3pgUohwdtRKyMdQizTkD5e3hBeBStSO/view?usp=sharing"
 
 # Load and preview certificate template
 try:
