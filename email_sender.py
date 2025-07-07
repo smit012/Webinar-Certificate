@@ -25,7 +25,7 @@ else:
 names_input = st.text_area("✍️ Enter names (comma-separated)", placeholder="e.g. Jay Shaj, Surani Sujal")
 
 # Y-position input
-y_position = st.number_input("📍 Enter Y-position for name placement", min_value=0, value=640)
+y_position = st.number_input("📍 Enter Y-position for name placement", min_value=0, value=630)
 
 # Font size input
 font_size = st.number_input("🔤 Font Size", min_value=10, max_value=150, value=90)
